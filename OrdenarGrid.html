@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kendo UI</title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.blueopal.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/jquery.min.js"></script>
+    <script>
+        if (typeof jQuery == "undefined") {
+            // Fallback to local jQuery.
+            document.write(decodeURIComponent('%3Cscript src="/path/to/local/jquery.min.js" %3E%3C/script%3E'));
+        }
+    </script>
+
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
+    <script>
+        if (typeof kendo == "undefined") {
+            // Checking for loaded CSS files is cumbersome,
+            // therefore assume that if the scripts have failed, so have the stylesheets.
+
+            // Fallback to local Kendo UI stylesheets.
+            document.write(decodeURIComponent('%3Clink rel="stylesheet" href="/path/to/local/kendo.common.min.css" %3C/%3E'));
+            document.write(decodeURIComponent('%3Clink rel="stylesheet" href="/path/to/local/kendo.blueopal.min.css" %3C/%3E'));
+
+            // Fallback to local Kendo UI scripts.
+            document.write(decodeURIComponent('%3Cscript src="/path/to/local/kendo.all.min.js" %3E%3C/script%3E'));
+            // Also add kendo.aspnetmvc.min.js or kendo.timezones.min.js if needed.
+        }
+    </script>
+</head>
+<body>
+     <h3 style="color:#4f90ea;">Ejercicio 2 - Usando busqueda</h3>
+     <p><a href="Busqueda.html">Regresar</a></p>
+
+     <!---Manejo mi kendogrid-->
+     <script type="text/javascript">
+         $(document).ready(function()
+         {
+            $("#myGrid").kendoGrid(
+            {
+                sortable : {
+                    mode: "multiple",
+                    allowUnsort: true
+                }
+            });
+         });
+     </script>
+
+     <table id="myGrid">
+         <thead>
+             <tr>
+                 <th>David</th>
+                 <th>Hernandez</th>
+                 <th>Rango</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>Jose</td>
+                 <td>Robledo</td>
+                 <td>Cabo</td>
+             </tr>
+             <tr>
+                 <td>Miles</td>
+                 <td>Morales</td>
+                 <td>Soldado Razo</td>
+             </tr>
+             <tr>
+                 <td>Ernesto</td>
+                 <td>Mendez</td>
+                 <td>Teniente</td>
+             </tr>
+             <tr>
+                 <td>Roman</td>
+                 <td>Valdez</td>
+                 <td>General</td>
+             </tr>
+             <tr>
+                 <td>Alfredo</td>
+                 <td>Vazquez</td>
+                 <td>Sunteniente</td>
+             </tr>
+             <tr>
+                 <td>Romario</td>
+                 <td>Rojas</td>
+                 <td>Capitan</td>
+             </tr>
+         </tbody>
+     </table>   
+</body>
+</html>

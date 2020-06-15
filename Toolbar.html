@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kendo UI</title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.blueopal.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/jquery.min.js"></script>
+    <script>
+        if (typeof jQuery == "undefined") {
+            // Fallback to local jQuery.
+            document.write(decodeURIComponent('%3Cscript src="/path/to/local/jquery.min.js" %3E%3C/script%3E'));
+        }
+    </script>
+
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
+    <script>
+        if (typeof kendo == "undefined") {
+            // Checking for loaded CSS files is cumbersome,
+            // therefore assume that if the scripts have failed, so have the stylesheets.
+
+            // Fallback to local Kendo UI stylesheets.
+            document.write(decodeURIComponent('%3Clink rel="stylesheet" href="/path/to/local/kendo.common.min.css" %3C/%3E'));
+            document.write(decodeURIComponent('%3Clink rel="stylesheet" href="/path/to/local/kendo.blueopal.min.css" %3C/%3E'));
+
+            // Fallback to local Kendo UI scripts.
+            document.write(decodeURIComponent('%3Cscript src="/path/to/local/kendo.all.min.js" %3E%3C/script%3E'));
+            // Also add kendo.aspnetmvc.min.js or kendo.timezones.min.js if needed.
+        }
+    </script>
+    <script src="js/personData.js"></script>    
+</head>
+<body>
+    <h3 style="color: #4f90ea;">Ejercicio 8 - Obteniendo un manejador en plantillas de Toolbar</h3>     
+
+    <!--KENDO-->
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            var miDataSource = new kendo.data.DataSource(
+            {
+                data: personData,
+                    schema: {
+                        model: {
+                            fields: {
+                                Nombre: { type: "string" },
+                                Apellido: { type: "string" },
+                                Profesion: { type: "string" },
+                                FDN: { type: "string" },
+                                ID: { type: "number" }
+                            }
+                        }
+                    }
+            });
+            $("#miGrid").kendoGrid(
+            {
+                dataSource: miDataSource,
+                toolbar: [
+                    { template: kendo.template($("#toolbarTemplate").html()) }
+                ],
+                columns: [
+                    { field: "Nombre", title: "Nombre Completo", width: "300px", template: '#=Nombre# #=Apellido#' },
+                    { field: "FDN", title: "Fecha de Nacimiento", width: "300px" }
+                ]
+            });
+        });
+
+        function toolClick()
+        {
+            alert('Puedes presionarme');
+        }
+    </script>
+    <script id="toolbarTemplate" type="text/x-kendo-template">
+        <a class="k-button" href="\#" onclick="return toolClick()">Toolbar Personalizable</a>
+    </script>
+    <div id="miGrid"></div>
+</body>
+</html>
